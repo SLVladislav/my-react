@@ -33,13 +33,25 @@
 
 export default function Profile({avatar, name, isOnline}) {
   return (
-    <div className="">
-      <img src={avatar} alt="Avatar" width="48" />
-      <p>{name}</p>
-      <p className={`w-3 h-3 rounded-full ${
-          isOnline ? "bg-green-500" : "bg-red-400"
-        }`}
-        title={isOnline ? "Online" : "Offline"}></p>
+    <div className="flex items-center gap-4 p-4 bg-white shadow-md rounded-xl max-w-sm w-full">
+      <img
+        src={avatar}
+        alt={`${name} avatar`}
+        className="w-14 h-14 rounded-full object-cover border border-gray-300"
+      />
+      <div className="flex flex-col">
+        <p className="text-lg font-semibold text-gray-800">{name}</p>
+        <div className="flex items-center gap-2">
+          <span
+            className={`w-3 h-3 rounded-full ${
+              isOnline ? "bg-green-500" : "bg-red-500"
+            }`}
+          ></span>
+          <span className="text-sm text-gray-600">
+            {isOnline ? "Online" : "Offline"}
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
