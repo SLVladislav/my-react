@@ -3,17 +3,32 @@
 // import Alert from "./Mailbox";
 // import Profile from "./Profile";
 // import userData from "../userData.json";
+
+
+import { useState } from "react";
+import { ConstupDateFeedback } from "./Options/Options";
+import { Feedback } from "./Feedback/Feedback";
+
       
 // import FriendList from "./FriendList/FriendList";
-import {  ClickCounter  } from "./submitBtn";
+// import {  ClickCounter  } from "./submitBtn";
+
 
 
 export default function App () {
-  // const user = userData[0];
+  const [click, setClick] = useState({
+    good: 0,
+    neutral: 0,
+    bad: 0
+  });
+
+  const total = click.good + click.neutral + click.neutral;
+
   return (
-    <>
-      <ClickCounter />
-      <ClickCounter/>
+    <>     
+      <ConstupDateFeedback click={click} setClick={setClick} total={total} />
+      {total > 0 ? (<Feedback click={click} total={total} />): (<p className="text-center text-gray-500 text-lg p-5">No feedback yet</p>)}   
+
       {/* <FriendList friends={friends} /> */}
       {/* <Profile
         name={user.username}
@@ -22,27 +37,6 @@ export default function App () {
         avatar={user.avatar}
         stats={user.stats}
       /> */}
-      {/* <h1>Best selling</h1> */}
-      {/* <h1>Books of the week</h1> */}
-      {/* <Alert variant="info">Please update your email!</Alert>
-      <Alert variant="error">There was an error during transaction!</Alert>
-      <Alert variant="success">Payment received, thank you for your purchase!</Alert>
-      <Alert variant="warning">Payment received, thank you for your purchase!</Alert> */}      
-      {/* <Product
-        name="Tacos Wiht Line"
-        // imgUrl="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?dpr=2&h=480&w=640"
-        price={10.99}
-      />
-      <Product
-        name="Fries and Burger"
-        imgUrl="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?dpr=2&h=480&w=640"
-        price={14.29}
-      /> */}
-      {/* <Card>
-      <h1>Card title</h1>
-      <p>Text between opening and closing tag</p>
-      </Card> */}
-
     </>
   );
 }
