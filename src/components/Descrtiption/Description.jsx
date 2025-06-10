@@ -1,4 +1,4 @@
-export const DashBoard = () => {
+export const Description = () => {
     return (
         <section className="bg-white px-6 py-10 rounded-2xl shadow-md text-center max-w-xl mx-auto mt-10">
             <h1 className="text-4xl font-bold text-gray-800 mb-4">Sip Happens Café</h1>

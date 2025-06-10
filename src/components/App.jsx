@@ -5,29 +5,40 @@
 // import userData from "../userData.json";
 
 
-import { useState } from "react";
-import { ConstupDateFeedback } from "./Options/Options";
+import { useEffect, useState } from "react";
+import { Options } from "./Options/Options";
 import { Feedback } from "./Feedback/Feedback";
 
       
 // import FriendList from "./FriendList/FriendList";
 // import {  ClickCounter  } from "./submitBtn";
 
-
+export const initFeedback = {
+  good: 0,
+  neutral: 0,
+  bad: 0
+}
 
 export default function App () {
-  const [click, setClick] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0
+  const [click, setClick] = useState(() => {
+    const feedbackStorage = JSON.parse(window.localStorage.getItem("feedback"))
+    return feedbackStorage ?? initFeedback;
   });
+  console.log(initFeedback);
+  const total = click.good + click.neutral + click.bad; 
 
-  const total = click.good + click.neutral + click.neutral;
+  useEffect(() => {  
+    window.localStorage.setItem('feedback', JSON.stringify(click))   
+  }, [click]);
+
+ 
+
+  
 
   return (
     <>     
-      <ConstupDateFeedback click={click} setClick={setClick} total={total} />
-      {total > 0 ? (<Feedback click={click} total={total} />): (<p className="text-center text-gray-500 text-lg p-5">No feedback yet</p>)}   
+      <Options  setClick={setClick} total={total}/>
+      {total > 0 ? (<Feedback click={click} total={total} />) : (<p className="text-center text-gray-500 text-lg p-5">No feedback yet</p>)}   
 
       {/* <FriendList friends={friends} /> */}
       {/* <Profile
