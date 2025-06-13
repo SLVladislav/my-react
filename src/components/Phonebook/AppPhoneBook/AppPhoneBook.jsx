@@ -10,20 +10,29 @@ const phoneBookList = [
   ]
 
 export const AppPhoneBook = () => {
-    const [listNames, setListNames] = useState(phoneBookList);
-    const [filterLists, setFilterLists] = useState("");
+    const [contactList, setContactList] = useState(phoneBookList);
+    const [filter, setFilter] = useState("");
 
-    const handleFilterLst = listNames.filter((listName) => listName.name.toLowerCase().includes(filter.toLowerCasw()));
+    const filteredList = contactList.filter((listName) => listName.name.toLowerCase().includes(filter.toLowerCase()));
 
-
-
+    const handlerDeleteContact = (id) => {
+        setContactList((prevState) => {
+            const newListName = prevState.filter((contact) => {
+                return contact.id !== id; 
+            })
+            return newListName;
+        })
+        
+    }
+   
+    
 
     return (
         <div className="max-w-xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-xl">
             <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">Phonebook</h1>
-            <SearchBox  value={filterLists} onFiter={setFilterLists} />
+            <SearchBox  value={filter} onFilter={setFilter} />
             {/* <ContactForm/> */}
-            <ContactList listNames={listNames} setListNames={setListNames} handleFilterLst={handleFilterLst} />
+            <ContactList contactList={contactList} setContactList={setContactList} filteredList={filteredList} handlerDeleteContact={handlerDeleteContact} />
         </div>
     );
 }

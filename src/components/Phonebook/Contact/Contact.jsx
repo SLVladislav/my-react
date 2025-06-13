@@ -1,20 +1,19 @@
 import { FcBusinessman, FcCellPhone  } from "react-icons/fc";
-export const Contact = ({ listName }) => {
-    console.log(listName);
+export const Contact = ({ contactInfo, handlerDeleteContact }) => {    
     
     return (    
         <div className="flex items-center justify-between gap-4 p-4 bg-white rounded-xl shadow-md border border-gray-200">
         <div className="flex items-center gap-4">
           <FcBusinessman className="text-2xl" />
           <div>
-            <p className="text-lg font-semibold">{listName.name}</p>
+            <p className="text-lg font-semibold">{contactInfo.name}</p>
             <div className="flex items-center gap-2 text-gray-600">
               <FcCellPhone className="text-xl" />
-              <span>{listName.number}</span>
+              <span>{contactInfo.number}</span>
             </div>
           </div>
         </div>
-        <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-md transition">
+        <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-md transition" onClick={()=>handlerDeleteContact(contactInfo.id)}  >
           Delete
         </button>
       </div>

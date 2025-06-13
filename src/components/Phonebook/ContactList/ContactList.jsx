@@ -1,15 +1,15 @@
 import { Contact } from "../Contact/Contact"
 
-export const ContactList = ({ listNames }) => {
-    console.log(listNames);
+export const ContactList = ({ filteredList, handlerDeleteContact }) => {
+   
     
     return (        
             <ul>
-                {listNames.map((listName) => 
-                   ( <li key={listName.id}>
-                        <Contact listName={listName} />
+                {filteredList.map((contactInfo) => 
+                   ( <li key={contactInfo.id}>
+                    <Contact contactInfo={contactInfo} handlerDeleteContact={handlerDeleteContact} />
                     </li>)
-            )};
+            )}
             </ul>
         
     );
