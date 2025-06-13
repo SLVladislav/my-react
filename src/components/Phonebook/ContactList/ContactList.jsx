@@ -6,7 +6,7 @@ export const ContactList = ({ filteredList, handlerDeleteContact }) => {
     return (        
             <ul>
                 {filteredList.map((contactInfo) => 
-                   ( <li key={contactInfo.id}>
+                   ( <li key={contactInfo.id} >
                     <Contact contactInfo={contactInfo} handlerDeleteContact={handlerDeleteContact} />
                     </li>)
             )}
