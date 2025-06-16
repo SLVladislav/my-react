@@ -1,11 +1,11 @@
-import { useRef } from "react";
+// import { useRef } from "react";
 
-export const UseFerence = () => {
-    const btnRef = useRef();
-    console.log(btnRef);
+// export const UseFerence = () => {
+//     const btnRef = useRef();
+//     console.log(btnRef);
     
   
-    return <button ref={btnRef}>Button with ref</button>;
-};
+//     return <button ref={btnRef}>Button with ref</button>;
+// };
   
-console.log(UseFerence);
+// // console.log(UseFerence);
