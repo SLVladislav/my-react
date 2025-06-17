@@ -1,15 +1,41 @@
 
-import { fetchArticlesWithTopic } from "../../photoSearch-api";
+import { useState } from "react";
+import { fetchArticlesWithTopic } from "../photoSearch-api";
 import { SearchBar } from "./SearchBar/SearchBar";
+import { ImageGallery } from "./ImageGallery/Imagegallery";
+import { Loader } from "./Loader/Loader";
+import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
+
 
 export const AppPhotoSearch = () => {
-    const response = fetchArticlesWithTopic()
-    console.log(response.data);
+    const [images, setImages] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    
+    const handleSearch = async (topic) => {
+        try {
+            setImages([]);
+            setLoading(true);
+            const data = await fetchArticlesWithTopic(topic);
+            console.log(data);
+            
+            setImages(data);
+        } catch (error) {
+            console.log(error); 
+            setError(error);
+        } finally {
+            setLoading(false);
+        }
+    };
     
 
     return (
         <div>
-            <SearchBar/>
+            <SearchBar onSearch={handleSearch} />
+            {loading && <Loader loading={loading} />}
+            {error && <ErrorMessage error={error } />}
+            {images.length > 0 && <ImageGallery items={images} />}
+            
         </div>
     );
 }
