@@ -1,4 +1,5 @@
-import { Link, Outlet, Route, Routes, useParams } from "react-router-dom"
+import { useEffect } from "react"
+import { Link, Navigate, Outlet, Route, Routes, useNavigate, useParams } from "react-router-dom"
 
 export const ReactRouter = () => {
     return (
@@ -64,4 +65,42 @@ const About = () => {
             <Outlet/>  
         </div>
     );
+}
+
+const UseNavigate = () => {
+    const navigate = useNavigate(); // ----- – для редіректу після дії (натискання кнопки, відправки форми, запиту).
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigate("/", { replace: true }) //---  перезаписує поточну URL-сторінку в історії браузера, щоб користувач не міг повернутися назад.
+        }, 3000);
+        return () => clearTimeout(timer);
+    },[navigate])
+    return (
+        <h1>Page NotFound 404. Return to the main page.... </h1>
+    )
+}
+// ------------------ Редірект при відсутності доступу
+import { useUser } from "../context/UserContext";
+const DashBoard = () => {
+    const { isLogIn } = useUser(); // ---  використовуємо контекст
+    if (!isLogIn) {
+        return <Navigate to="/login" replace /> // ------------ для редіректу під час рендеру (захист сторінок, автоматичний перехід)
+    }
+    return (
+        <h1>Welcome to your personal account</h1>
+    )
+}
+// ------ useEffect() + useNavigate()
+const Dashboard = () => {
+    const { isLogIn } = useUser();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!isLogIn) {
+            navigate("/login", {replace: true})
+        }
+    }, [isLogIn, navigate])
+    return (
+        <h1>Welcome to your personal account</h1>  
+    )
 }
