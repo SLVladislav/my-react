@@ -6,6 +6,7 @@
 // import phoneBooks from "../phoneBooks"
 
 import { AppPhotoSearch } from "./Photo Search/AppPhotoSearch";
+import { ReactRouter } from "./ReactRouter/ReactRouter";
 
 // import { useState } from "react";
 // import { FeedbackForm } from "./FeedbackForm/FeedbackForm";
@@ -73,7 +74,8 @@ export default function App() {
 
   return (
     <>     
-      <AppPhotoSearch/>
+      <ReactRouter/>
+      {/* <AppPhotoSearch/> */}
       {/* <UseFerence /> */}
       {/* <FeedbackForm/> */}
       {/* <LoginForm/> */}
