@@ -7,5 +7,11 @@ export default defineConfig({
   plugins: [react(),tailwindcss()],
     build: {
     sourcemap: true,
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
+      'pages': '/src/pages',
+    },
   }
 })
