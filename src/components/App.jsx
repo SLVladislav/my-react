@@ -1,25 +1,23 @@
-import Layout from "./Layout";
-import Dogs from "pages/Dogs";
-import DogsDetails from "pages/DogsDetails";
-import Home from "pages/Home";
-import { NavLink, Route, Routes } from "react-router-dom";
+import HomePage from "pages/HomePage";
+import MoviesPage from "pages/MoviesPage";
+import Layout from "pages/Layout";
+import { Route, Routes } from "react-router-dom";
+import MovieDetailsPage from "pages/MovieDetailsPage";
 
 
 
-
-export default function App() {
-  
- 
- 
-
-  
+export default function App() {  
 
   return (
     <Routes>
       <Route path="/" element={<Layout/>}>
-        <Route index element={<Home />} />
-        <Route path="dogs" element={<Dogs />} />
-        <Route path="dogs/:dogId" element={<DogsDetails />} />
+        <Route index element={<HomePage />} />
+        <Route path="movies" element={<MoviesPage />} />
+        <Route path="movies/:movieId" element={<MovieDetailsPage />} >
+          <Route path="cast" element={ <MovieCast/>} />
+          <Route path="reviews" element={ <MovieReviews/>} />
+        </Route>
+        <Route path="*" element={<NotFound/>} />
       </Route>
     </Routes>
   );

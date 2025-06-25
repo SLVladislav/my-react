@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Home = () => {
+const HomePage = () => {
     // useEffect(() => {
     //     //---HTTP запрос, если нужно
     // }, [])
@@ -8,4 +8,4 @@ const Home = () => {
         <div>Home page</div>
     )
 };
-export default Home;
+export default HomePage;

@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 
-const DogsDetails = () => {
-    const { dogId } = useParams();
+const MovieDetailsPage = () => {
+    // const { movieId } = useParams();
         // useEffect(() => {
     //     //---HTTP запрос, если нужно
     // }, [])
     
     return (
-        <div>DogsDetails: {dogId}</div>
+        <div>MovieDetailsPage:</div>
     );
 }
-export default DogsDetails;
+export default MovieDetailsPage;
