@@ -1,5 +1,5 @@
 import { useState } from "react";
-import searchMoviesApi from "../SearchMoviesApi";
+import searchMoviesApi from "../Search/SearchMoviesApi";
 import MovieList from "../components/MovieList";
 import { useSearchParams } from "react-router-dom";
 

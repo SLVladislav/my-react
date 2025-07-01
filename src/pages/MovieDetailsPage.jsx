@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 
-import detailsMoviesApi from "../DetailsMoviesApi";
+import detailsMoviesApi from "../Search/DetailsMoviesApi";
 import DetailMoviesList from "../components/DetailMoviesList";
 
 
@@ -16,7 +16,7 @@ const MovieDetailsPage = () => {
             try {      
              
                 const response = await detailsMoviesApi(movieId);
-                console.log(response);
+                
                 
                 setDetailMovie(response);
             } catch (error) {
@@ -32,7 +32,7 @@ const MovieDetailsPage = () => {
             <div className="p-6">
                 <h2 className="text-2xl font-semibold mb-4">Additional Information</h2>
                 <ul className="flex gap-4 mb-6">
-                    <li><NavLink to="cast" className="text-blue-600 hover:underline">Cast</NavLink></li>
+                    <li><NavLink to="cast"className="text-blue-600 hover:underline" >Cast</NavLink></li>
                     <li><NavLink to="reviews" className="text-blue-600 hover:underline">Reviews</NavLink></li>
                 </ul>
                 <div>
