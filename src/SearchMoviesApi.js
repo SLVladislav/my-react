@@ -5,7 +5,7 @@ axios.defaults.headers.common['Authorization'] = "Bearer eyJhbGciOiJIUzI1NiJ9.ey
 const searchMoviesApi = async (query) => {
     try {
         
-        const response = await axios.get(`/search/movie?query=${query}`); 
+        const response = await axios.get(`/search/movie?query=${query}&language=en-US`); 
         return response.data.results;
     } catch (error) {
         console.error('Error fetching search movies:', error);

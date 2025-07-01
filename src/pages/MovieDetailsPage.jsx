@@ -3,44 +3,32 @@ import { useEffect, useState } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 
 import detailsMoviesApi from "../DetailsMoviesApi";
+import DetailMoviesList from "../components/DetailMoviesList";
 
 
 const MovieDetailsPage = () => {    
     const { movieId } = useParams();
-    const [detailMovie, setDeatailMovie] = useState([]);
+    const [detailMovie, setDetailMovie] = useState([]);
      
     useEffect(() => {
         //---HTTP запрос, если нужно
         const fetchMovieDetails = async () => {
-            try {           
+            try {      
              
                 const response = await detailsMoviesApi(movieId);
-                console.log(response);                    
-                setDeatailMovie(response);
+                console.log(response);
+                
+                setDetailMovie(response);
             } catch (error) {
                 console.error("Error fetching trending movies:", error);
             }
         }
         fetchMovieDetails();
-    }, [movieId]);
-
-    if (!detailMovie) {
-        return <p className="text-center mt-6">Loading...</p>;
-    };
+    }, [movieId]);  
     
     return (
         <div>
-            <div className="p-6">          
-                <h1 className="text-3xl font-bold mb-4">{detailMovie.original_title}</h1>
-                <img
-                    src={`https://image.tmdb.org/t/p/w400${detailMovie.poster_path}`}
-                    alt={detailMovie.title}
-                    className="w-96 rounded-lg mb-4"
-                />
-                <p className="mb-2"><span className="font-semibold">Overview:</span> {detailMovie.overview}</p>
-                <p className="mb-2"><span className="font-semibold">Release Date:</span> {detailMovie.release_date}</p>
-                <p className="mb-2"><span className="font-semibold">Rating:</span> {detailMovie.vote_average}</p>
-            </div>
+            <DetailMoviesList movie={detailMovie} />
             <div className="p-6">
                 <h2 className="text-2xl font-semibold mb-4">Additional Information</h2>
                 <ul className="flex gap-4 mb-6">
