@@ -10,7 +10,7 @@ const MoviesPage = () => {
 
     const updateQueryString = (evt) => {
         const idValue = evt.target.value;
-        const nextParams = idValue !== "" ? { idValue } : {};
+        const nextParams = idValue !== "" ? {id: idValue } : {};
         setSearchParams(nextParams);
     }
  
@@ -53,7 +53,7 @@ const MoviesPage = () => {
                         type="text"
                         name="query"
                         placeholder="Search films"
-                        value={id}
+                        value={id ?? ""}
                         autoFocus
                         autoComplete="off"
                         className="border border-gray-300 rounded px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"

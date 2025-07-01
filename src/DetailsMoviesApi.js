@@ -4,16 +4,17 @@ axios.defaults.headers.common['Authorization'] = "Bearer eyJhbGciOiJIUzI1NiJ9.ey
 
  const detailsMoviesApi = async (movieId) => {
    try {
-    const response = await axios.get(`/movie/${movieId}?language=en-US`);        
-   return response.data.results;  
+     const response = await axios.get(`/movie/${movieId}`);        
+     console.log(response);
+     
+   return response.data;  
    } catch (error) {
     console.error('Error fetching details movies:', error);
     throw error;
    }
-
 }
 
 
 
 
-export default detailsMoviesApi ;
+export default detailsMoviesApi;
