@@ -16,18 +16,21 @@ export default function App() {
   
 
   return (
-    <Routes>
-      <Route path="/" element={<Navigation/>}>
-        <Route index element={<HomePage />} />
-        <Route path="movies" element={<MoviesPage />} />
-        <Route path="movies/:movieId" element={<MovieDetailsPage />} >
-          <Route path="cast" element={ <MovieCast/>} />
-          <Route path="reviews" element={ <MovieReviews/>} />
-        </Route>
-        <Route path="*" element={<NotFound/>} />
-      </Route>
-    </Routes>
-  );
+    <>
+      
+    </>
+    // <Routes>
+    //   <Route path="/" element={<Navigation/>}>
+    //     <Route index element={<HomePage />} />
+    //     <Route path="movies" element={<MoviesPage />} />
+    //     <Route path="movies/:movieId" element={<MovieDetailsPage />} >
+    //       <Route path="cast" element={ <MovieCast/>} />
+    //       <Route path="reviews" element={ <MovieReviews/>} />
+    //     </Route>
+    //     <Route path="*" element={<NotFound/>} />
+    //   </Route>
+    // </Routes>
+  )
 }
 
 
