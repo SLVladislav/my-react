@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addTask } from "../../redux/actions";
+import { addTask, deleteTask, setStatusFilter, toggleCompleted } from "../../redux/actions";
 
 
 
@@ -85,14 +85,70 @@ const TaskForm = () => {
             completed: false,
             text: form.elements.text.value
         }));
+        // Відправляємо результат - екшен видалення завдання
+        const handleDelete = () => {
+            dispatch(deleteTask(task.id))
+        }
+
+
+
         form.reset();
     };
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="text" placeholder="Enter task text..." />
-            <button type="submit">Add task</button>
-        </form>
-    )
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input type="text" name="text" placeholder="Enter task text..." />
+                <button type="submit">Add task</button>
+            </form>
+            <div>
+                <input type="checkbox" />
+                <p>{task.text}</p>
+                <button type="button" onClick={handleDelete}>
+                    Delete
+                </button>
+            </div>
+        </div>
+    );
 
 
 }
+
+// Переключення статусу
+const Task = () => {
+    const dispatch = useDispatch();
+
+    const handleDelete = () => {
+        dispatch(deleteTask(task.id))
+    };
+
+    const handleToogle = () => {
+        dispatch(toggleCompleted(task.id))
+    };
+
+    return (
+        <div>
+            <input type="checkbox" onChange={handleToogle} checked={task.completed} />
+            <p>{task.text}</p>
+            <button onClick={handleDelete}>Delete</button>
+        </div>
+    )
+}
+//Зміна фільтра
+const StatusFilter = () => {
+    //  Отримуємо посилання на функцію відправки екшенів
+    const dispatch = useDispatch();
+    const filter = useSelector((state) => state.filters.status);
+    // 4. Викликаємо фабрику екшену та передаємо значення фільтра
+    // 5. Відправляємо результат - екшен зміни фільтра
+    const handleFilterChange = filter => dispatch(setStatusFilter(filter));
+    return (
+        <div>
+            <button onClick={()=>handleFilterChange("all")}>All</button>
+            <button onClick={()=>handleFilterChange("active")} >Active</button>
+            <button onClick={()=>handleFilterChange("completed")} >Completed</button>
+        </div>
+    )
+}
+
+//Редюсери (reducers) -  - це функція, яка приймає поточний стан та екшен як аргументи і повертає новий стан.
+//Слайси стану
