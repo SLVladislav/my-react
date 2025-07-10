@@ -152,3 +152,16 @@ const StatusFilter = () => {
 
 //Редюсери (reducers) -  - це функція, яка приймає поточний стан та екшен як аргументи і повертає новий стан.
 //Слайси стану
+// {
+//   tasks: {
+// 	items: []
+//   },
+//   filters: {
+// 	status: "all"
+//   }
+// }
+// Функція createSlice
+// const appState = {
+//     tasks: {},
+//     filters: {},
+//   }

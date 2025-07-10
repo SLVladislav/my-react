@@ -7,6 +7,7 @@ import Navigation from "./Navigation";
 import MovieCast from "./MovieCast";
 import MovieReviews from "./MovieReviews";
 import NotFound from "pages/NotFound";
+import { AppPhoneBook } from "./Phonebook/AppPhoneBook/AppPhoneBook";
 
 
 
@@ -16,9 +17,9 @@ export default function App() {
   
 
   return (
-    <>
-      
-    </>
+    <div>
+      <AppPhoneBook/>
+    </div>
     // <Routes>
     //   <Route path="/" element={<Navigation/>}>
     //     <Route index element={<HomePage />} />

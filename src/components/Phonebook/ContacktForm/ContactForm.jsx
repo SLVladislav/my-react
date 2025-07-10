@@ -1,5 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
+import { addContacts } from "../../../redux/contactsSlice";
 import * as Yup from "yup";
 
 const FeedbackSchema = Yup.object().shape({
@@ -7,35 +9,47 @@ const FeedbackSchema = Yup.object().shape({
     number: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required") 
 });
 
-const initialValues = {
-    name: "",
-    number: ""
-};
+// const initialValues = {
+//     name: "",
+//     number: ""
+// };
 
-export const ContactForm = ({onAddContact}) => { 
+export const ContactForm = () => { 
     const nameId = nanoid();
     const numberId = nanoid();
+    const dispatch = useDispatch();
     
     
     
 
-    const handlerSubmmit = (value, actions) => {
-        console.log(value);
-        onAddContact({
+    const handlerSubmmit = (evt) => {
+        evt.preventDefault();
+        const form = evt.target;
+        dispatch(addContacts({
             id: {
                 nameId,
                 numberId
             },
-            name: value.name,
-            number: value.number
-        })
-        actions.resetForm();  
+            name: form.elements.name.value,
+            number: form.elements.number.value,
+        }));
+
+        // console.log(value);
+        // onAddContact({
+        //     id: {
+        //         nameId,
+        //         numberId
+        //     },
+        //     name: value.name,
+        //     number: value.number
+        // })
+        form.resetForm();  
         
     }
 
     return (
         <div>
-            <Formik initialValues={initialValues} validationSchema={FeedbackSchema} onSubmit={handlerSubmmit}>
+            <Formik  validationSchema={FeedbackSchema} onSubmit={handlerSubmmit}>
                 <Form>
                     <div>
                         <label htmlFor={nameId}>Name</label>
