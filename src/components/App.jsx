@@ -12,6 +12,7 @@ import { AppPhoneBook } from "./Phonebook/AppPhoneBook/AppPhoneBook";
 
 
 
+
 export default function App() {  
   
   
@@ -19,6 +20,7 @@ export default function App() {
   return (
     <div>
       <AppPhoneBook/>
+      {/* <AppAsyncRedux/> */}
     </div>
     // <Routes>
     //   <Route path="/" element={<Navigation/>}>

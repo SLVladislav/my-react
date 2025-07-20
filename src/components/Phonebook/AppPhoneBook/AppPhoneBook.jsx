@@ -1,7 +1,10 @@
-import { useState } from "react";
+
 import { ContactList } from "../ContactList/ContactList";
 import { SearchBox } from "../SearchBox/SearchBox"; 
 import { ContactForm } from "../ContacktForm/ContactForm";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchContacts } from "../../../redux/operations";
 
 // const phoneBookList = [
 //     {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
@@ -11,6 +14,7 @@ import { ContactForm } from "../ContacktForm/ContactForm";
 //   ]
 
 export const AppPhoneBook = () => {
+    //------------------------------------------------------------------------
     // const [contactList, setContactList] = useState(phoneBookList);
     // const [filter, setFilter] = useState("");
 
@@ -31,7 +35,14 @@ export const AppPhoneBook = () => {
     //         return [...prevContact, newContact];
     //     })
     // }
-   
+   //------------------------------------------------------------------------------------
+    const dispatch = useDispatch();
+    const isLoading = useSelector((state) => state.contacts.isLoading);
+    const error = useSelector((state) => state.contacts.error);
+
+    useEffect(() => {
+       dispatch(fetchContacts()) 
+    },[dispatch])
    
     
 
@@ -47,6 +58,7 @@ export const AppPhoneBook = () => {
             <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">Phonebook</h1>
             <ContactForm />
             <SearchBox />
+            {isLoading && !error && <b>Recuest in progress....</b>} 
             <ContactList />
         </div>
     );
