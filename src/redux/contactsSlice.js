@@ -1,45 +1,43 @@
 import { createAction, createSlice } from "@reduxjs/toolkit";
 
-export const addContactsItems = createAction("contacts/addContactsItems");
-export const deleteContactsItems = createAction("contacts/deleteContactsItems");
+// export const addContactsItems = createAction("contacts/addContactsItems");
+// export const deleteContactsItems = createAction("contacts/deleteContactsItems");
 // export const toggleCompleted = createAction("tasks/toggleCompleted");
 
 // Початковий стан
-const initialState = [];
+const initialState = {
+     items: [
+                { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+                { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+                { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+                { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+            ]
+};
 
 const slice = createSlice({
     name: "contacts",
-    // initialState: {
-    //     contacts: {
-    //         items: [                
-    //             { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-    //             { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-    //             { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-    //             { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    //             ]
-    //     }
     initialState,
-    reducers: {
-        addContacts: (state, action) => {
-            return {
-                ...state,
-                items: [...state.contacts.items, action.payload],
-            };
-            // state.items.push(action.payload);
-        },
-        deleteContacts: (state, action) => {
-            return {
-                ...state,
-                items: state.contacts.items.filter((contact) => contact.id !== action.payload),
-            };
-            // state.items = state.items.filter(item => item.id !== action.payload);
-        },
+        reducers: {
+            addContact: (state, action) => {
+                return {
+                    ...state,
+                    items: [...state.items, action.payload],
+                };
+                // state.items.push(action.payload);
+            },
+            deleteContact: (state, action) => {
+                return {
+                    ...state,
+                    items: state.items.filter((contact) => contact.id !== action.payload),
+                };
+                // state.items = state.items.filter(item => item.id !== action.payload);
+            },
        
-    },
+        },
                
     
-}
-);
+    
+});
     // Об'єкт case-редюсерів
     // reducers: {
     //     addTask: (state, action) => {
@@ -125,6 +123,6 @@ const slice = createSlice({
 //     }
 // };
 
-export const { addContacts, deleteContacts } = slice.actions;
+export const { addContact, deleteContact } = slice.actions;
 
 export default slice.reducer;

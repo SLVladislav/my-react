@@ -1,12 +1,12 @@
 import { FcBusinessman, FcCellPhone  } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-import { deleteContacts} from "../../../redux/contactsSlice";
+import { deleteContact} from "../../../redux/contactsSlice";
 
 
 export const Contact = ({ contact }) => {    
    const dispatch = useDispatch();
   const handleDeleteContacts = () => {
-    dispatch(deleteContacts(contact.id))
+    dispatch(deleteContact(contact.id))
   };
     return (    
         <div className="flex items-center justify-between gap-4 p-4 bg-white rounded-xl shadow-md border border-gray-200">

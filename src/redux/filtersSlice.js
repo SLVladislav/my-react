@@ -1,6 +1,6 @@
 import { createAction, createSlice } from "@reduxjs/toolkit";
 
-export const setStatusFilter = createAction("filters/changeFilter");
+// export const setStatusFilter = createAction("filters/changeFilter");
 
 const slice = createSlice({
     name: "filters",
