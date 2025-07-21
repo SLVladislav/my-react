@@ -1,9 +1,11 @@
 import { FcBusinessman, FcCellPhone  } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-// import { deleteContact} from "../../../redux/contactsSlice";
+import { deleteContact} from "../../../redux/operations";
 
 
 export const Contact = ({ contact }) => {    
+  const dispatch = useDispatch();
+  const handleDelete = () => dispatch(deleteContact(contact.id))
 
     return (    
         <div className="flex items-center justify-between gap-4 p-4 bg-white rounded-xl shadow-md border border-gray-200">
@@ -17,7 +19,7 @@ export const Contact = ({ contact }) => {
             </div>
           </div>
         </div>
-        <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-md transition" onClick={handleDeleteContacts} >
+        <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-md transition" onClick={handleDelete} >
           Delete
         </button>
       </div>
