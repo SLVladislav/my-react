@@ -3,22 +3,19 @@ import { useDispatch } from "react-redux";
 import { addContact } from "../../../redux/operations";
 
 import * as Yup from "yup";
-import { nanoid } from "nanoid";
 
-const FeedbackSchema = Yup.object().shape({
-    name: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required("Required"),
-    number: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required") 
-});
+
+// const FeedbackSchema = Yup.object().shape({
+//     name: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required("Required"),
+//     number: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required")
+// });
+// validationSchema={FeedbackSchema}
 
 const initialValues = {
-    name: " ",
-    number: " "
+  name: "",
+  number: "",
 };
-
-export const ContactForm = () => { 
-    const nameId = nanoid();
-      const numberId = nanoid();
-
+export const ContactForm = () => {
     const dispatch = useDispatch();  
     
     
@@ -33,17 +30,17 @@ export const ContactForm = () => {
       <h2 className="text-2xl font-semibold text-center mb-4">Add New Contact</h2>
       <Formik
         initialValues={initialValues}
-        validationSchema={FeedbackSchema}
+        
         onSubmit={handlerSubmmit}
       >
         <Form className="space-y-5">
           <div>
-            <label htmlFor={nameId} className="block text-gray-700 font-medium mb-1">
+            <label htmlFor="name" className="block text-gray-700 font-medium mb-1">
               Name
             </label>
             <Field
               type="text"
-              id={nameId}
+              id="name"
               name="name"
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
@@ -55,12 +52,12 @@ export const ContactForm = () => {
           </div>
 
           <div>
-            <label htmlFor={numberId} className="block text-gray-700 font-medium mb-1">
+            <label htmlFor="number" className="block text-gray-700 font-medium mb-1">
               Number
             </label>
             <Field
               type="text"
-              id={numberId}
+              id="number"
               name="number"
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
