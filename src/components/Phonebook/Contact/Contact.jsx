@@ -1,6 +1,6 @@
 import { FcBusinessman, FcCellPhone  } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-import { deleteContact} from "../../../redux/operations";
+import { deleteContact} from "../../../redux/contacts/operations";
 
 
 export const Contact = ({ contact }) => {    

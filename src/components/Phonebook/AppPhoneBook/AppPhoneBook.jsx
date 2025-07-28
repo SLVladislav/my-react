@@ -4,7 +4,7 @@ import { SearchBox } from "../SearchBox/SearchBox";
 import { ContactForm } from "../ContacktForm/ContactForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchContacts } from "../../../redux/operations";
+import { fetchContacts } from "../../../redux/contacts/operations";
 
 // const phoneBookList = [
 //     {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
