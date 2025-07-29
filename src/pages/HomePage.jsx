@@ -7,11 +7,11 @@ const HomePage = () => {
    
     useEffect(() => {
         const fetchTrendingMovies = async () => {
-            try { 
+            try {
                 
                 const results = await trendingMoviesApi();
                 console.log(results);
-                setMovies(results);                
+                setMovies(results);
             } catch (error) {
                 console.error("Error fetching trending movies:", error);
             }
@@ -27,3 +27,4 @@ const HomePage = () => {
     )
 };
 export default HomePage;
+

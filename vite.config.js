@@ -9,9 +9,10 @@ export default defineConfig({
     sourcemap: true,
   },
   resolve: {
-    alias: {
+   alias: {
       '@': '/src',
       'pages': '/src/pages',
+      "components": "./src/components"
     },
   }
 })
