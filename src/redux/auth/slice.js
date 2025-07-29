@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const authSlice = createSlice({
+ const authSlice = createSlice({
     name: "auth",
     initialState: {
         user: {
@@ -11,4 +11,6 @@ const authSlice = createSlice({
         isLoggerdIn: false,
         isRefreshing: false,
     }
-});
+ });
+
+export default authSlice.reducer;

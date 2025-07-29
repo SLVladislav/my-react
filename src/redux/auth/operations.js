@@ -3,14 +3,24 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://connections-api.goit.global";
 
-axios.defaults.headers.common['Authorization'] = `Berear`;
+const setAuthHeader = token => {
+axios.defaults.headers.common['Authorization'] = `Berear ${token}`;    
+}
+// console.log(setAuthHeader);
+
+
+
 
 export const authRegister = createAsyncThunk("auth/register",
-    async (_, thunkAPI){
+    async (credentials, thunkAPI) => {
         try {
-            consr response = await axios.post("/users/signup")
+            const response = await axios.post("/users/signup", credentials)
+            setAuthHeader(response.data.token);
+            return response.data;
         } catch (error) {
-            
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
-)
+);
+
+
