@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 
-const Navigation = () => {
+const Navigations = () => {
     return (
         <div className="min-h-screen flex flex-col bg-gray-100">
             <header className="bg-blue-600 shadow-md">
@@ -32,16 +32,14 @@ const Navigation = () => {
                     >
                         Log In
                     </NavLink>
-                   
+                    <main>
+                        <Outlet />
+                    </main>
                 </nav>
             </header>
-
-            <main className="container mx-auto p-6 flex-grow">
-                <Outlet />
-            </main>
         </div>
     );
 };
 
 
-export default Navigation;
+export default Navigations;
